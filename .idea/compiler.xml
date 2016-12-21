@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="algo-princeton_main" target="1.5" />
-      <module name="algo-princeton_test" target="1.5" />
+      <module name="algo-princeton_main" target="1.7" />
+      <module name="algo-princeton_test" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
