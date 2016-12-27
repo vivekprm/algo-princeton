@@ -17,7 +17,8 @@ public class SortClient {
             a[i] = StdRandom.uniform();
         //Sort sort = new SelectionSort();
         //Sort sort = new InsertionSort();
-        Sort sort = new ShellSort();
+        //Sort sort = new ShellSort();
+        Sort sort = new MergeSort();
         sort.sort(a);
         for (int i = 0; i < N; i++)
             StdOut.println(a[i]);
