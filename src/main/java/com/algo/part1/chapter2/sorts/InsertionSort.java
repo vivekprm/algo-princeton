@@ -14,13 +14,22 @@ public class InsertionSort implements Sort {
             }
         }
     }
-    private void exch(Comparable[] items, int i, int j) {
+    public static void sort(Comparable[] items, int lo, int hi) {
+        for(int i = lo; i <= hi; i++){
+            for(int j = i; j > lo; j--){
+                if(less(items[j], items[j-1]) < 0){
+                    exch(items, j, j-1);
+                }
+            }
+        }
+    }
+    private static void exch(Comparable[] items, int i, int j) {
         Comparable temp = items[i];
         items[i] = items[j];
         items[j] = temp;
     }
 
-    private int less(Comparable item1, Comparable item2) {
+    private static int less(Comparable item1, Comparable item2) {
         return item1.compareTo(item2);
     }
 }
