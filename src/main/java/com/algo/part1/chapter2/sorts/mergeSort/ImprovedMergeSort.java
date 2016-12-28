@@ -30,6 +30,8 @@ public class ImprovedMergeSort implements Sort {
     }
 
     private void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+        assert isSorted(a, lo, mid);
+        assert isSorted(a, mid+1, hi);
         for(int k = lo; k <= hi; k++){
             aux[k] = a[k];
         }
@@ -48,8 +50,15 @@ public class ImprovedMergeSort implements Sort {
                 a[k] = aux[i++];
             }
         }
+        assert isSorted(a, lo, hi);
     }
-    private int less(Comparable item1, Comparable item2) {
+    private static int less(Comparable item1, Comparable item2) {
         return item1.compareTo(item2);
+    }
+
+    private static boolean isSorted(Comparable[] a, int lo, int hi) {
+        for (int i = lo+1; i < hi; i++)
+            if (less(a[i], a[i-1])<0) return false;
+        return true;
     }
 }

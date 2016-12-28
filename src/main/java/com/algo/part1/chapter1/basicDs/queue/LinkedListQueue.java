@@ -1,16 +1,40 @@
 package com.algo.part1.chapter1.basicDs.queue;
 
+import java.util.Iterator;
+
 /**
  * Created by cov-127 on 21/12/16.
  */
-public class LinkedListQueue<Item> implements Queue<Item> {
+public class LinkedListQueue<Item> implements Queue<Item> , Iterable<Item>{
     private Node first;
     private Node last;
     private int N = 0;
 
-    private class Node{
+    @Override
+    public Iterator<Item> iterator() {
+        return new ListIterator<Item>(first);
+    }
+
+    private class ListIterator<Item> implements Iterator<Item> {
+        private Node<Item> current;
+
+        public ListIterator(Node<Item> first) {
+            current = first;
+        }
+
+        public boolean hasNext()  { return current != null;                     }
+        public void remove()      { throw new UnsupportedOperationException();  }
+
+        public Item next() {
+            Item item = current.value;
+            current = current.next;
+            return item;
+        }
+    }
+
+    private class Node<Item>{
         Item value;
-        Node next;
+        Node<Item> next;
     }
 
     @Override
@@ -33,7 +57,7 @@ public class LinkedListQueue<Item> implements Queue<Item> {
         Node oldFirst = first;
         first = first.next;
         N--;
-        return oldFirst.value;
+        return (Item) oldFirst.value;
     }
 
     @Override
