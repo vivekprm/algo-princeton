@@ -11,19 +11,29 @@ public class PriorityQueueClient {
     public static void main(String[] args) throws IOException {
         FileReader fr = new FileReader("src/main/resources/tinyBatch.txt");
         BufferedReader br = new BufferedReader(fr);
-        BinaryHeap<Transaction> pq = new BinaryHeap<>(16);
+        MaxBinaryHeap<Transaction> pqMax = new MaxBinaryHeap<>(16);
+        MinBinaryHeap<Transaction> pqMin = new MinBinaryHeap<>(16);
         String line = br.readLine();
         int M = 5;
         while (line != null){
             Transaction transaction = new Transaction(line);
-            pq.insert(transaction);
+            pqMax.insert(transaction);
+            pqMin.insert(transaction);
             line = br.readLine();
-            if (pq.size() > M)
-                pq.delMax();    // pq contains smallest M items
+            if (pqMax.size() > M)
+                pqMax.delMax();    // pq contains smallest M items
+            if(pqMin.size() > M)
+                pqMin.delMin();
         }
         System.out.println("Smallest "+M+" items are: ");
-        while (!pq.isEmpty()){
-            Transaction transaction = pq.delMax();
+        while (!pqMax.isEmpty()){
+            Transaction transaction = pqMax.delMax();
+            System.out.println(transaction);
+        }
+
+        System.out.println("Largest "+M+" items are: ");
+        while (!pqMin.isEmpty()){
+            Transaction transaction = pqMin.delMin();
             System.out.println(transaction);
         }
     }

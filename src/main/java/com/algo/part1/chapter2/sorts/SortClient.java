@@ -2,6 +2,7 @@ package com.algo.part1.chapter2.sorts;
 
 import com.algo.libraries.StdOut;
 import com.algo.libraries.StdRandom;
+import com.algo.part1.chapter2.priorityQueue.HeapSort;
 import com.algo.part1.chapter2.sorts.mergeSort.ImprovedMergeSort;
 import com.algo.part1.chapter2.sorts.quicksort.ImprovedQuickSort;
 import com.algo.part1.chapter2.sorts.quicksort.QuickSort;
@@ -26,7 +27,8 @@ public class SortClient {
         //Sort sort = new ImprovedMergeSort();
         //Sort sort = new QuickSort();
         //Sort sort = new ImprovedQuickSort();
-        Sort sort = new ThreeWayQuickSort();
+        //Sort sort = new ThreeWayQuickSort();
+        Sort sort = new HeapSort();
         sort.sort(a);
         for (int i = 0; i < N; i++)
             StdOut.println(a[i]);
