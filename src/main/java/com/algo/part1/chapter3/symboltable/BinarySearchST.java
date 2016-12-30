@@ -59,7 +59,7 @@ public class BinarySearchST <Key extends Comparable<Key>, Value>{
         if(key == null)
             throw new IllegalArgumentException("Argument to rank() is null");
         if(value == null){
-            delete(key);
+            remove(key);
             return;
         }
         int i = rank(key);
@@ -101,29 +101,30 @@ public class BinarySearchST <Key extends Comparable<Key>, Value>{
         return n==0;
     }
 
-    public void delete(Key key) {
+    public Value remove(Key key) {
         if(key == null){
             throw new IllegalArgumentException("Argument to get() can't be null");
         }
         if(isEmpty())
-            return;
+            return null;
         int i = rank(key);
         // Key not in table
         if(i < n && keys[i].compareTo(key) != 0){
-            return;
+            return null;
         }
         // Key is in the table
         for(int j = i; j<n; j++){
             values[j] = values[j+1];
             keys[j] = keys[j+1];
         }
+        Value temp = values[i];
         keys[i] = null;
         values[i] = null;
         n--;
         // resize if 1/4 full
         if (n > 0 && n == keys.length/4) resize(keys.length/2);
         assert check();
-        return;
+        return temp;
     }
 
     public boolean contains(Key key) {
@@ -137,12 +138,12 @@ public class BinarySearchST <Key extends Comparable<Key>, Value>{
 
     public void deleteMin() {
         if (isEmpty()) throw new NoSuchElementException("Symbol table underflow error");
-        delete(min());
+        remove(min());
     }
 
     public void deleteMax() {
         if (isEmpty()) throw new NoSuchElementException("Symbol table underflow error");
-        delete(max());
+        remove(max());
     }
 
     /**

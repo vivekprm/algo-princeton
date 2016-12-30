@@ -8,7 +8,8 @@ import com.algo.libraries.StdOut;
 public class SymbolTableClient {
     public static void main(String[] args) {
         //SequentialSearchST<String, String> st = new SequentialSearchST<String, String>();
-        ArrayST<String, String> st = new ArrayST<>();
+        //ArrayST<String, String> st = new ArrayST<>();
+        BinarySearchST<String, String> st = new BinarySearchST<>();
 
         // insert some key-value pairs
         st.put("www.cs.princeton.edu",   "128.112.136.11");

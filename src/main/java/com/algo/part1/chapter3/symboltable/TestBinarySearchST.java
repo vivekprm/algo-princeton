@@ -62,7 +62,7 @@ public class TestBinarySearchST {
         }
         StdOut.println();
 
-        // delete the smallest keys
+        // remove the smallest keys
         for (int i = 0; i < st.size() / 2; i++) {
             st.deleteMin();
         }
@@ -72,9 +72,9 @@ public class TestBinarySearchST {
             StdOut.println(s + " " + st.get(s));
         StdOut.println();
 
-        // delete all the remaining keys
+        // remove all the remaining keys
         while (!st.isEmpty()) {
-            st.delete(st.select(st.size() / 2));
+            st.remove(st.select(st.size() / 2));
         }
         StdOut.println("After deleting the remaining keys");
         StdOut.println("--------------------------------");
